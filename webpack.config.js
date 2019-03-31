@@ -12,9 +12,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test:/\.(jsx?|vue)$/,
-        loader:'eslint-loader',
-        enforce:'pre',
+        test: /\.(jsx?|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
       },
       {
         test: /\.css$/,
@@ -22,7 +22,7 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      },      {
+      }, {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -81,7 +81,8 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     })
   ])
-}else{
-  module.exports.plugins = (module.exports.plugins ||[]).concat([new FriendlyErrors(),])
+} else if(process.env.NODE_ENV === 'test'){
+
+} else {
+  module.exports.plugins = (module.exports.plugins || []).concat([new FriendlyErrors(),])
 }
- 

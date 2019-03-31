@@ -15,7 +15,7 @@ for (const key in filters) {
 
 sync(store, router)
 
-async function main () {
+async function main() {
   await store.dispatch('init')
 
   // eslint-disable-next-line no-new
