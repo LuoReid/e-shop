@@ -1,7 +1,16 @@
 <template>
-  <div class="store-item store-item-infos-parent" :class="cssClass">
-    <div class="image" @click="addToCart">
-      <BaseImage ref="image" :src="item.img" />
+  <div
+    class="store-item store-item-infos-parent"
+    :class="cssClass"
+  >
+    <div
+      class="image"
+      @click="addToCart"
+    >
+      <BaseImage
+        ref="image"
+        :src="item.img"
+      />
       <div class="icon">
         <i class="material-icons">add</i>
       </div>
@@ -22,13 +31,13 @@ import StoreItemInfos from './StoreItemInfos.vue'
 import { flyingImage } from '../utils/animations'
 
 export default {
-  mixins: [
-    DiscountMixin(),
-  ],
-
   components: {
     StoreItemInfos,
   },
+
+  mixins: [
+    DiscountMixin(),
+  ],
 
   props: {
     item: {

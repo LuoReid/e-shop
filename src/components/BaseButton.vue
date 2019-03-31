@@ -4,7 +4,11 @@
     :disabled="disabled"
     @click="onClick"
   >
-    <i v-if="icon" class="material-icons icon" v-text="icon"></i>
+    <i
+      v-if="icon"
+      class="material-icons icon"
+      v-text="icon"
+    />
 
     <span class="content">
       <slot />

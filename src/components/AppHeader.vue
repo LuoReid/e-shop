@@ -10,11 +10,11 @@
         >
           <input
             ref="searchInput"
-            class="search-input"
             v-model="searchTextModel"
+            class="search-input"
             placeholder="Search"
             @keyup.esc="closeSearch"
-          />
+          >
 
           <BaseButton
             class="icon-button"
@@ -30,7 +30,12 @@
           class="state"
         >
           <h1 class="app-name">
-            <router-link class="link" :to="{ name: 'home' }">Fashion Store</router-link>
+            <router-link
+              class="link"
+              :to="{ name: 'home' }"
+            >
+              Fashion Store
+            </router-link>
           </h1>
 
           <BaseButton

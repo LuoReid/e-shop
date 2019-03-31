@@ -7,7 +7,9 @@
       Your order is complete
     </p>
     <div class="actions">
-      <router-link :to="{ name: 'home' }">Return to home</router-link>
+      <router-link :to="{ name: 'home' }">
+        Return to home
+      </router-link>
     </div>
   </BasePage>
 </template>

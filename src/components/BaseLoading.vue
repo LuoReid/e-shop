@@ -1,6 +1,6 @@
 <template>
   <div class="base-loading">
-    <div class="spinner"></div>
+    <div class="spinner" />
   </div>
 </template>
 

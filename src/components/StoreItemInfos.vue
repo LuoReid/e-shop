@@ -1,11 +1,21 @@
 <template>
-  <div class="store-item-infos" :class="cssClass">
-    <div class="title">{{ item.title }}</div>
-    <div v-if="discount" class="discount">
+  <div
+    class="store-item-infos"
+    :class="cssClass"
+  >
+    <div class="title">
+      {{ item.title }}
+    </div>
+    <div
+      v-if="discount"
+      class="discount"
+    >
       <span class="original-price">{{ item.originalPrice | money }}</span>
       <span class="percentage">-{{ discount | percentage }}</span>
     </div>
-    <div class="price">{{ item.price | money }}</div>
+    <div class="price">
+      {{ item.price | money }}
+    </div>
     <div class="rating">
       <i class="material-icons">start</i> {{ item.rating }}
     </div>

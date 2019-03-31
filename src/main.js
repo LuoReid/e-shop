@@ -18,6 +18,7 @@ sync(store, router)
 async function main () {
   await store.dispatch('init')
 
+  // eslint-disable-next-line no-new
   new Vue({
     el: '#app',
     router,

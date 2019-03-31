@@ -4,7 +4,10 @@
     <router-view />
     <AppFooter />
 
-    <transition name="right-pane" duration="800">
+    <transition
+      name="right-pane"
+      duration="800"
+    >
       <StoreCart v-if="showCart" />
     </transition>
   </div>

@@ -1,14 +1,20 @@
 <template>
   <div class="base-pane">
-    <div class="background" @click="close"></div>
+    <div
+      class="background"
+      @click="close"
+    />
     <div class="pane">
       <div class="header">
-        <div v-if="title" class="title">
+        <div
+          v-if="title"
+          class="title"
+        >
           <i
             v-if="icon"
             class="icon material-icons"
             v-text="icon"
-          ></i>
+          />
           {{ title }}
         </div>
         <BaseButton
@@ -37,7 +43,7 @@ export default {
     title: {
       type: String,
       default: null,
-    }
+    },
   },
 
   methods: {

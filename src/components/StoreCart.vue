@@ -6,7 +6,12 @@
     @close="close"
   >
     <div class="items">
-      <div v-if="cartItems.length === 0" class="empty">Nothing in the cart yet</div>
+      <div
+        v-if="cartItems.length === 0"
+        class="empty"
+      >
+        Nothing in the cart yet
+      </div>
       <StoreCartItem
         v-for="item of cartItems"
         :key="item.id"
@@ -14,7 +19,10 @@
       />
     </div>
 
-    <div slot="footer" class="cart-footer">
+    <div
+      slot="footer"
+      class="cart-footer"
+    >
       <div class="cart-total">
         <span class="prefix">Total</span>
         <span class="value">{{ cartTotal | money }}</span>
@@ -22,7 +30,9 @@
       <BaseButton
         :disabled="cartItems.length === 0"
         @click="checkout"
-      >Checkout</BaseButton>
+      >
+        Checkout
+      </BaseButton>
     </div>
   </BasePane>
 </template>

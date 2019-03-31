@@ -38,14 +38,14 @@ export default {
     ]),
   },
 
+  mounted () {
+    this.fetchItems()
+  },
+
   methods: {
     ...mapActions('items', [
       'fetchItems',
     ]),
-  },
-
-  mounted () {
-    this.fetchItems()
   },
 }
 </script>

@@ -1,6 +1,11 @@
 <template>
   <BasePage class="page-store-item">
-    <div v-if="error" class="error">An error occured (sorry)</div>
+    <div
+      v-if="error"
+      class="error"
+    >
+      An error occured (sorry)
+    </div>
     <template v-else>
       <!-- Details -->
       <div class="section details">
@@ -25,7 +30,9 @@
               <BaseButton
                 icon="add"
                 @click="addToCart"
-              >Add to cart</BaseButton>
+              >
+                Add to cart
+              </BaseButton>
             </div>
           </div>
         </transition>
@@ -45,13 +52,18 @@
             key="content"
             class="comments-content"
           >
-            <div v-if="comments.length === 0" class="empty">No comments yet</div>
+            <div
+              v-if="comments.length === 0"
+              class="empty"
+            >
+              No comments yet
+            </div>
             <div
               v-for="comment of comments"
               :key="comment.id"
               class="comment"
               v-text="comment.text"
-            ></div>
+            />
           </div>
         </transition>
 
@@ -60,7 +72,7 @@
             v-model="commentText"
             placeholder="Type a new comment"
             @keyup.enter="submitComment"
-          />
+          >
         </div>
       </div>
     </template>

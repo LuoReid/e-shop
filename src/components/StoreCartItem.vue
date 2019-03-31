@@ -13,10 +13,10 @@
       <div class="count">
         <span class="prefix">x</span>
         <input
+          v-model.number="countModel"
           type="number"
           class="value"
-          v-model.number="countModel"
-        />
+        >
       </div>
       <div class="auto-hide">
         <BaseButton
