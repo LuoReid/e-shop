@@ -10,7 +10,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "db": "json-server --watch db.json",
     "eslint": "eslint --ext .js,.jsx,.vue src --fix",
-    "jest": "jest"
+    "jest": "jest",
+    "jest:update":"jest --updateSnapshot"
   },
   "dependencies": {
     "axios": "^0.18.0",
