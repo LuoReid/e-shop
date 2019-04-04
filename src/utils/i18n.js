@@ -1,5 +1,5 @@
 import VueI18n from 'vue-i18n'
-import langs from '../../i18n'
+import langs from '../i18n'
 
 // async function loadAsyncModule(){
 //     await module = await import('./path/to/module')
