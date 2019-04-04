@@ -1,1 +1,1 @@
-export default['en','fr','es','de']
+export default ['en', 'fr', 'es', 'de']
