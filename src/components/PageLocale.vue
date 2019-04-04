@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import langs from '../../i18n'
+import langs from '../i18n'
 
 export default {
   data () {
@@ -54,7 +54,7 @@ export default {
     async setLocale (locale) {
       this.loading = true
       if (!this.$i18n.messages[locale]) {
-        const { default: messages } = await import(`../../i18n/locales/${locale}`)
+        const { default: messages } = await import(`../i18n/locales/${locale}`)
         this.$i18n.setLocaleMessage(locale, messages)
       }
       this.$i18n.locale = locale
