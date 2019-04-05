@@ -1,16 +1,8 @@
 <template>
   <BasePage class="page-home">
     <transition name="fade">
-      <BaseLoading
-        v-if="loading"
-        key="loading"
-        class="overlay"
-      />
-      <div
-        v-else
-        key="items"
-        class="items"
-      >
+      <BaseLoading v-if="loading" key="loading" class="overlay"/>
+      <div v-else key="items" class="items">
         <StoreItem
           v-for="(item, index) of items"
           :key="item.id"
@@ -23,52 +15,55 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import StoreItem from './StoreItem.vue'
+import { mapGetters, mapActions } from "vuex";
+import StoreItem from "./StoreItem.vue";
 
 export default {
   components: {
-    StoreItem,
+    StoreItem
   },
 
   computed: {
-    ...mapGetters('items', [
-      'items',
-      'loading',
-    ]),
+    ...mapGetters("items", ["items", "loading"])
   },
 
-  mounted () {
-    this.fetchItems()
+  mounted() {
+    if (!this.items.length) {
+      this.fetchItems();
+    }
   },
 
   methods: {
-    ...mapActions('items', [
-      'fetchItems',
-    ]),
-    asyncData ({ store }) {
-      return store.dispatch('items/fetchItems')
-    },
-  },
-}
+    ...mapActions("items", ["fetchItems"]),
+    asyncData({ store }) {
+      return store.dispatch("items/fetchItems");
+    }
+  }
+};
 </script>
 
 <style lang="stylus" scoped>
-.items
-  display flex
-  flex-direction row
-  flex-wrap wrap
+.items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
-  .store-item
-    flex 50% 1 1
-    box-sizing border-box
-    animation slide .5s cubic-bezier(0.0, 0.0, 0.2, 1) backwards
+  .store-item {
+    flex: 50% 1 1;
+    box-sizing: border-box;
+    animation: slide 0.5s cubic-bezier(0, 0, 0.2, 1) backwards;
+  }
+}
 
-@keyframes slide
-  0%
-    opacity 0
-    transform translateY(100px)
-  100%
-    opacity 1
-    transform none
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
 </style>

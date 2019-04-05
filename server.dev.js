@@ -3,8 +3,8 @@ const path = require('path')
 const MFS = require('memory-fs')
 const webpack = require('webpack')
 const chokidar = require('chokidar')
-const clientConfig = require('./webpack/client')
-const serverConfig = require('./webpack/server')
+const clientConfig = require('./src/webpack/client')
+const serverConfig = require('./src/webpack/server')
 
 // Read file in real or virtual file systems
 const readFile = (fs, file) => {
@@ -72,7 +72,8 @@ module.exports = function setupDevServer ({ server, templatePath, onUpdate }) {
     const mfs = new MFS()
     serverCompiler.outputFileSystem = mfs
     serverCompiler.watch({}, (err, stats) => {
-      if (err) throw err
+      //if (err) throw err
+      if(err) reject(err)
       stats = stats.toJson()
       if (stats.errors.length) return
 

@@ -3,7 +3,7 @@
 require('reify')
 
 const express = require('express')
-const { default: langs } = require('./i18n')
+const { default: langs } = require('./src/i18n')
 const { createBundleRenderer } = require('vue-server-renderer')
 const fs = require('fs')
 const path = require('path')
@@ -71,7 +71,9 @@ if (isProd) {
   // In development: wait for webpack compilation
   // when receiving a SSR request
   ssr = (req, res) => {
-    readyPromise.then(() => renderApp(req, res))
+    readyPromise.then(() => renderApp(req, res)).catch((err)=>{
+      console.error(err)
+    })
   }
 }
 server.get('*', ssr)
