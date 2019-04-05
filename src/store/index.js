@@ -45,3 +45,23 @@ if (module.hot) {
 }
 
 export default store
+
+export function createStore () {
+  const store = new Vuex.Store({
+    strict: process.env.NODE_ENV !== 'production',
+
+    actions: {
+      init () {
+        console.log('store init')
+      },
+    },
+
+    modules: {
+      cart,
+      item,
+      items,
+      ui,
+    },
+  })
+  return store
+}

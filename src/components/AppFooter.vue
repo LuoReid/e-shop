@@ -1,7 +1,11 @@
 <template>
   <footer class="app-footer">
     <div>Made with <a href="https://vuejs.org/">Vue.js</a> and ❤️</div>
-    <div v-if="$route.name !== 'locale'"><router-link v-bind:to="{name:'locale'}">{{$t('change-lang')}}</router-link></div>
+    <div v-if="$route.name !== 'locale'">
+      <router-link :to="{name:'locale'}">
+        {{ $t('change-lang') }}
+      </router-link>
+    </div>
   </footer>
 </template>
 

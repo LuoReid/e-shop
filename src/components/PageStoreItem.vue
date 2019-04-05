@@ -165,6 +165,10 @@ export default {
         }
       }
     },
+
+    asyncData ({ store, route }) {
+      return store.dispatch('item/fetchStoreItemDetails', { id: route.params.id })
+    },
   },
 }
 </script>

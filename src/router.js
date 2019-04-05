@@ -17,6 +17,16 @@ const routes = [
   { path: '*', component: PageNotFound },
 ]
 
+export function createRouter () {
+  const router = new VueRouter({
+    routes,
+    mode: 'history',
+    scrollBehavior (to, from, savedPosition) {
+
+    },
+  })
+  return router
+}
 const router = new VueRouter({
   routes,
   mode: 'history',
