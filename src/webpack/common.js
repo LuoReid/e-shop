@@ -4,11 +4,13 @@ const FriendlyErrors = require('friendly-errors-webpack-plugin')
 
 module.exports = {
   // entry: './src/main.js',
-  entry:'./src/entry-client.js',
+  //entry:'./src/entry-client.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    //path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    //filename: 'build.js'
+    filename: '[name].[chunkhash].js'
   },
   module: {
     rules: [
