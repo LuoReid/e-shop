@@ -5,13 +5,13 @@ const FriendlyErrors = require('friendly-errors-webpack-plugin')
 const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   // entry: './src/main.js',
-  //entry:'./src/entry-client.js',
+  // entry:'./src/entry-client.js',
   output: {
-    //path: path.resolve(__dirname, './dist'),
+    // path: path.resolve(__dirname, './dist'),
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/dist/',
-    //filename: 'build.js'
-    filename: '[name].[chunkhash].js'
+    // filename: 'build.js'
+    filename: '[name].[chunkhash].js',
   },
   module: {
     rules: [
@@ -24,7 +24,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader'
+          'css-loader',
         ],
       }, {
         test: /\.vue$/,
@@ -33,39 +33,39 @@ module.exports = {
           extractCSS: isProd,
           preserveWhitespace: false,
           loaders: {
-          }
+          },
           // other vue-loader options go here
-        }
+        },
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
-        }
-      }
-    ]
+          name: '[name].[ext]?[hash]',
+        },
+      },
+    ],
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
     },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['*', '.js', '.vue', '.json'],
   },
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
   },
   performance: {
-    hints: false
+    hints: false,
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -74,23 +74,23 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
-      }
+        NODE_ENV: '"production"',
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
-        warnings: false
-      }
+        warnings: false,
+      },
     }),
     new webpack.LoaderOptionsPlugin({
-      minimize: true
+      minimize: true,
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new ExtractTextPlugin({ filename: 'common.[chunkhash].css' })
+    new ExtractTextPlugin({ filename: 'common.[chunkhash].css' }),
   ])
 } else if (process.env.NODE_ENV === 'test') {
 
 } else {
-  module.exports.plugins = (module.exports.plugins || []).concat([new FriendlyErrors(),])
+  module.exports.plugins = (module.exports.plugins || []).concat([new FriendlyErrors()])
 }

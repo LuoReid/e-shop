@@ -15,7 +15,5 @@ module.exports = merge(common, {
   }),
   plugins: [
     new VueSSRServerPlugin(),
-  ]
+  ],
 })
-
-

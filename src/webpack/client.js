@@ -8,5 +8,5 @@ module.exports = merge(common, {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: 'mainfest', minChunks: Infinity }),
     new VueSSRClientPlugin(),
-  ]
+  ],
 })

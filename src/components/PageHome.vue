@@ -1,8 +1,16 @@
 <template>
   <BasePage class="page-home">
     <transition name="fade">
-      <BaseLoading v-if="loading" key="loading" class="overlay"/>
-      <div v-else key="items" class="items">
+      <BaseLoading
+        v-if="loading"
+        key="loading"
+        class="overlay"
+      />
+      <div
+        v-else
+        key="items"
+        class="items"
+      >
         <StoreItem
           v-for="(item, index) of items"
           :key="item.id"
@@ -15,31 +23,31 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import StoreItem from "./StoreItem.vue";
+import { mapGetters, mapActions } from 'vuex'
+import StoreItem from './StoreItem.vue'
 
 export default {
   components: {
-    StoreItem
+    StoreItem,
   },
 
   computed: {
-    ...mapGetters("items", ["items", "loading"])
+    ...mapGetters('items', ['items', 'loading']),
   },
 
-  mounted() {
+  mounted () {
     if (!this.items.length) {
-      this.fetchItems();
+      this.fetchItems()
     }
   },
 
   methods: {
-    ...mapActions("items", ["fetchItems"]),
-    asyncData({ store }) {
-      return store.dispatch("items/fetchItems");
-    }
-  }
-};
+    ...mapActions('items', ['fetchItems']),
+    asyncData ({ store }) {
+      return store.dispatch('items/fetchItems')
+    },
+  },
+}
 </script>
 
 <style lang="stylus" scoped>
