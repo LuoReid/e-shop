@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 const FriendlyErrors = require('friendly-errors-webpack-plugin')
 
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   // entry: './src/main.js',
   //entry:'./src/entry-client.js',
@@ -29,6 +30,8 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
+          extractCSS: isProd,
+          preserveWhitespace: false,
           loaders: {
           }
           // other vue-loader options go here
@@ -82,9 +85,11 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    })
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new ExtractTextPlugin({ filename: 'common.[chunkhash].css' })
   ])
-} else if(process.env.NODE_ENV === 'test'){
+} else if (process.env.NODE_ENV === 'test') {
 
 } else {
   module.exports.plugins = (module.exports.plugins || []).concat([new FriendlyErrors(),])

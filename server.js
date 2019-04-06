@@ -23,6 +23,14 @@ let readyPromise
 
 if (isProd) {
   // TODO production
+  const template = fs.readFileSync(templatePath, 'utf-8')
+  const bundle = require('./dist/vue-ssr-server-bundle.json')
+  const clientManifest = require('./dist/vue-ssr-client-manifest.json')
+  renderer = createBundleRenderer(bundle, {
+    runInNewContext: false,
+    template,
+    clientManifest,
+  })
 } else {
   // TODO development
   const setupDevServer = require('./server.dev')
@@ -71,7 +79,7 @@ if (isProd) {
   // In development: wait for webpack compilation
   // when receiving a SSR request
   ssr = (req, res) => {
-    readyPromise.then(() => renderApp(req, res)).catch((err)=>{
+    readyPromise.then(() => renderApp(req, res)).catch((err) => {
       console.error(err)
     })
   }
