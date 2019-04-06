@@ -12,7 +12,11 @@
     "db": "json-server --watch db.json",
     "eslint": "eslint --ext .js,.jsx,.vue src --fix",
     "jest": "jest",
-    "jest:update": "jest --updateSnapshot"
+    "jest:update": "jest --updateSnapshot",
+    "build:client": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack/client.js",
+    "build:server": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack/server.js",
+    "build1": "rimraf dist && npm run build:client && npm run build:server",
+    "start": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
     "axios": "^0.18.0",
